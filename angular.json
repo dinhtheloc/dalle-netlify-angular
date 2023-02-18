@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-best-practice": {
+    "angular-dalle": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-best-practice",
+            "outputPath": "dist/angular-dalle",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -32,7 +32,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "file-saver"
+           ]
           },
           "configurations": {
             "production": {
@@ -48,7 +51,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -71,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-best-practice:build:production"
+              "browserTarget": "angular-dalle:build:production"
             },
             "development": {
-              "browserTarget": "angular-best-practice:build:development"
+              "browserTarget": "angular-dalle:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-best-practice:build"
+            "browserTarget": "angular-dalle:build"
           }
         },
         "test": {

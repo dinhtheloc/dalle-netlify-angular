@@ -15,6 +15,6 @@ export class PostService {
     }
 
     createPost(data: any): Observable<any> {
-        return this.http.post(`${this.apiUrl}/v1/post`, data)
+        return this.http.post(`${this.apiUrl}/post-create`, data)
     }
 }

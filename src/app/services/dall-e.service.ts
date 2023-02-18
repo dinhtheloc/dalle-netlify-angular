@@ -12,7 +12,7 @@ export class DallEService {
     constructor(private http: HttpClient) {}
 
     createImage(data: any): Observable<any> {
-        return this.http.post(`${this.apiUrl}/v1/dalle`, data)
+        return this.http.post(`${this.apiUrl}/dalle-create-image`, data)
     }
 
 }

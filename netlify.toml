@@ -1,0 +1,9 @@
+
+[build]
+  command = "ng build --configuration production"
+  functions = "netlify/functions"
+  publish = "dist/angular-dalle"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
