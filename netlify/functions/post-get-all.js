@@ -7,7 +7,7 @@ connectDB(process.env.MONGODB_URL)
 
 exports.handler = async (event, context) => {
     try {
-        const posts = await Post.find({})
+        const posts = await Post.find({}).sort({ createdAt: -1 })
         return {
             statusCode: 200,
             body: JSON.stringify({ success: true, data: posts }),

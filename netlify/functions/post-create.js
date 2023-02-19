@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
         const newPost = await Post.create({
             name,
             prompt,
-            photo: photoUrl.url,
+            photo: photoUrl.url
         })
 
         return {

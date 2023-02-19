@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { HttpErrorResponse } from '@angular/common/http'
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import {
     FormBuilder,
     FormControl,
@@ -10,6 +10,7 @@ import {
 } from '@angular/forms'
 import { Router } from '@angular/router'
 import { firstValueFrom } from 'rxjs'
+import { AlertComponent } from 'src/app/components/alert/alert.component'
 import { surpriseMePrompts } from 'src/app/constant'
 import { DallEService } from 'src/app/services/dall-e.service'
 import { PostService } from 'src/app/services/post.service'
@@ -17,7 +18,7 @@ import { PostService } from 'src/app/services/post.service'
 @Component({
     selector: 'create-post',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, AlertComponent],
     templateUrl: './create-post.component.html',
     styleUrls: ['./create-post.component.scss'],
 })
@@ -26,6 +27,7 @@ export class CreatePostComponent {
     loading = false
     form!: FormGroup
 
+    @ViewChild('AlertComponent') alertComponent!: AlertComponent
     constructor(
         private fb: FormBuilder,
         private postService: PostService,
@@ -58,7 +60,9 @@ export class CreatePostComponent {
             alert('Success')
             this.router.navigate(['home'])
         } catch (err) {
-            alert(err)
+            if (err instanceof HttpErrorResponse) {
+                this.alertComponent.addItem(err.error.message)
+            }
         } finally {
             this.loading = false
         }
@@ -87,7 +91,7 @@ export class CreatePostComponent {
             this.photo.setValue(`data:image/jpeg;base64,${photo}`)
         } catch (err: unknown) {
             if (err instanceof HttpErrorResponse) {
-                alert(err.error.message)
+                this.alertComponent.addItem(err.error.message)
             }
         } finally {
             this.generatingImg = false
