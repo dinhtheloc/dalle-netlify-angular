@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { HttpErrorResponse } from '@angular/common/http'
+import { Component } from '@angular/core'
 import {
     FormBuilder,
     FormControl,
@@ -7,11 +8,11 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms'
+import { Router } from '@angular/router'
+import { firstValueFrom } from 'rxjs'
 import { surpriseMePrompts } from 'src/app/constant'
 import { DallEService } from 'src/app/services/dall-e.service'
-import { firstValueFrom } from 'rxjs'
 import { PostService } from 'src/app/services/post.service'
-import { Router } from '@angular/router'
 
 @Component({
     selector: 'create-post',
@@ -84,8 +85,10 @@ export class CreatePostComponent {
                 })
             )
             this.photo.setValue(`data:image/jpeg;base64,${photo}`)
-        } catch (err) {
-            alert(err)
+        } catch (err: unknown) {
+            if (err instanceof HttpErrorResponse) {
+                alert(err.error.message)
+            }
         } finally {
             this.generatingImg = false
         }

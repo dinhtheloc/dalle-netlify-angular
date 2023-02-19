@@ -7,7 +7,6 @@ import { Post } from 'src/app/interfaces/post'
 })
 export class FilterPostsPipe implements PipeTransform {
     transform(posts: Post[], searchText: string): Post[] {
-        console.log({ searchText, posts })
         return posts.filter(
             (item) =>
                 item.name.toLowerCase().includes(searchText.toLowerCase()) ||
