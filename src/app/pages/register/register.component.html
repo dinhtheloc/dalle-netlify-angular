@@ -6,7 +6,7 @@
             class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0"
         >
             <div class="flex flex-col">
-                <a aria-label="Home" href="/"
+                <a aria-label="Home" [routerLink]="['/home']"
                     ><svg
                         aria-hidden="true"
                         viewBox="0 0 109 40"
@@ -50,7 +50,8 @@
                             class="font-medium text-blue-600 hover:underline"
                             routerLink="/login"
                             >Sign in</a
-                        > to your account.
+                        >
+                        to your account.
                     </p>
                 </div>
             </div>
