@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router'
 import { DebounceKeyupDirective } from 'src/app/directives/debounce-keyup.directive'
 import { Post } from 'src/app/interfaces/post'
 import { PostService } from 'src/app/services/post.service'
+import { BartSimpsonComponent } from './components/bart-simpson/bart-simpson.component'
 import { CardComponent } from './components/card/card.component'
 
 import { FilterPostsPipe } from './pipes/filter-posts.pipe'
@@ -21,6 +22,7 @@ import { FilterPostsPipe } from './pipes/filter-posts.pipe'
         FilterPostsPipe,
         FormsModule,
         RouterModule,
+        BartSimpsonComponent
     ],
 })
 export class HomeComponent implements OnInit {
