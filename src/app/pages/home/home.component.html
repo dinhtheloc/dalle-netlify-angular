@@ -17,12 +17,14 @@
 
 <div class="mt-32">
     <div class="relative">
-        <bart-simpson class="absolute left-[0px] top-[-112px]"></bart-simpson>
+        <bart-simpson
+            class="z-0 absolute left-[0px] top-[-112px] transition hover:-translate-y-[-40px]"
+        ></bart-simpson>
         <input
             type="text"
             id="text"
             name="text"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
+            class="z-10 relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
             placeholder="Search something..."
             debounceKeyUp
             (onEvent)="handleDebouncedKeyUp($event)"
