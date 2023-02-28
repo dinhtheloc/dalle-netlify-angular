@@ -22,7 +22,6 @@ export class BartSimpsonComponent {
             const anchorY = rekt.top + rekt.height / 2
 
             const angleDeg = this.angle(mouseX, mouseY, anchorX, anchorY)
-            console.log({ angleDeg })
 
             const eyes = Array.from(
                 document.getElementsByClassName(
