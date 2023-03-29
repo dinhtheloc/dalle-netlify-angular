@@ -13,7 +13,10 @@
             property="og:description"
             content="DALL·E 2 is a new AI system that can create realistic images and art from a description in natural language."
         />
-        <meta property="og:url" content="https://locdt-dalle.netlify.app/home" />
+        <meta
+            property="og:url"
+            content="https://locdt-dalle.netlify.app/home"
+        />
         <meta
             property="og:image"
             content="https://res.cloudinary.com/dqbhm2tbr/image/upload/v1676655151/dall-e-2-og_weknzb.jpg"
@@ -27,6 +30,21 @@
             type="image/x-icon"
             href="/assets/favicons/favicon.ico"
         />
+
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-VG9Z57NQ9D"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+
+            gtag('config', 'G-VG9Z57NQ9D')
+        </script>
     </head>
     <body class="flex h-full flex-col">
         <div class="min-h-full">
